@@ -1,4 +1,4 @@
- // Created a function that will display the remaining time in the game to the HTML.
+// Created a function that will display the remaining time in the game to the HTML.
 window.onload = function() { 
     var timeLeft = 75;
 
@@ -7,6 +7,7 @@ window.onload = function() {
         document.querySelector("#timer").textContent = timeLeft + " seconds left"
         if (timeLeft === 0) {
             clearInterval(timeInterval)
+            document.querySelector("#timer").textContent = ""
         }
     }, 1000);
 };
@@ -34,7 +35,7 @@ const quizArray = [
     {
       id: "3",
       question: "String values must be enclosed within _________ when being assigned to variables.",
-      options: ["commas", "culry brackets", "quotes", "parenthesis"],
+      options: ["commas", "curly brackets", "quotes", "parenthesis"],
       correct: "quotes",
     },
     {
