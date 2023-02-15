@@ -1,6 +1,6 @@
  
 
-//Created an array witht the quiz questions inside of it.
+// Created an array with the quiz questions inside of it.
 const quizArray = [
     {
       id: "0",
