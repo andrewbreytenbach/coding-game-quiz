@@ -34,18 +34,18 @@ const quizArray = [
       },
   ];
 
-// Created a function to show the correct question and the correct answer options.
-  function showQuestion(event) {
-    
+// Created a function to show the correct question and the correct answer options by passing the array into the function.
+ function showQuestion(event) {
     let questionTitle = document.getElementById('title');
-    questionTitle.textContent = event.title;
-
-    let answerOptions = document.querySelectorAll('.alternative');
-    console.log(answerOptions);
+    questionTitle.textContent = event.question;
+  
+    let answerOptions = document.querySelectorAll('#questions');
     answerOptions.forEach(function(element, index){
-      element.textContent = event.alternatives[index];
+      element.textContent = event.options[index];
     });
   }
+
+showQuestion(quizArray[0]);
 
 // Created a function that will display the remaining time in the game to the HTML.
 window.onload = function() { 
