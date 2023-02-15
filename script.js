@@ -1,4 +1,11 @@
 
+// Created an object with the first question inside of it. 
+let questionOne = {
+    title: 'Commonly used data types DO NOT include',
+    alternatives: ['strings', 'numbers', 'alerts', 'numbers'],
+    correctAnswer: 2
+  };
+
 // Created a function that will display the remaining time in the game to the HTML.
 document.querySelector(".start-button").addEventListener("click", function() {
     var timeLeft = 75;
