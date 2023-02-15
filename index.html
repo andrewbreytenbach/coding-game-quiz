@@ -11,20 +11,23 @@
     <h1>JavaScript Coding Quiz</h1>
     <p id="timer"></p>
     <div class="start-screen"></div>
-      <div id="display-container">
-        <div class="header">
-          <div class="number-of-count">
-            <span class="number-of-question">1 of 5 questions</span>
-          </div>
-        </div>
-        <div id="questions">
-          <!-- questions and options will be displayed here -->
-          <ul id="myList"></ul>
+    <div id="display-container">
+      <div class="header">
+        <div>
+          <h2 id="title"></h2>
+          <ul>
+            <li><button id="option-0"></button></li>
+            <li><button id="option-1"></button></li>
+            <li><button id="option-2"></button></li>
+            <li><button id="option-3"></button></li>
+          </ul>
         </div>
       </div>
       <div class="score-container hide">
-        <div id="user-score">Current Score: </div>
+        <div id="user-score">Current Score: <span id="score-value"></span></div>
       </div>
+      <button id="submit-button">Submit</button>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
