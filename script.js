@@ -1,38 +1,38 @@
+ 
 
-// Created an object with the first question inside of it. 
-var questionOne = {
-    title: 'Commonly used data types DO NOT include',
-    alternatives: ['strings', 'numbers', 'alerts', 'numbers'],
-    correctAnswer: 2
-  };
-
-// Created an object with the second question inside of it. 
-var questionTwo = {
-    title: 'The condition in an if/else statement is enclosed with ________',
-    alternatives: ['quotes', 'curly brackets', 'parenthesis', 'square brackets'],
-    correctAnswer: 1
-  };
-
-// Created an object with the third question inside of it. 
-var questionThree = {
-    title: 'Arrays in JavaScript can be used to store _________',
-    alternatives: ['numbers and strings', 'other arrays', 'booleans', 'all of the above'],
-    correctAnswer: 3
-  };
-
-// Created an object with the fourth question inside of it. 
-var questionFour = {
-    title: 'String values must be enclosed within _________ when being assigned to variables.',
-    alternatives: ['commas', 'curly brackets', 'quotes', 'parenthesis'],
-    correctAnswer: 2
-  };
-
-// Created an object with the fifth question inside of it. 
-var questionFive = {
-    title: 'A very useful tool used during development and debugging for printing content to the debugger is: ',
-    alternatives: ['JavaScript', 'terminal/bash', 'for loops', 'console.log'],
-    correctAnswer: 3
-  };
+//Created an array witht the quiz questions inside of it.
+const quizArray = [
+    {
+      id: "0",
+      question: "Commonly used data types DO NOT include:",
+      options: ["strings", "numbers", "alerts", "booleans"],
+      correct: "alerts",
+    },
+    {
+      id: "1",
+      question: "The condition in an if/else statement is enclosed with ________",
+      options: ["quotes", "curly brackets", "parenthesis", "square brackets"],
+      correct: "curly brackets",
+    },
+    {
+      id: "2",
+      question: "Arrays in JavaScript can be used to store _________",
+      options: ["numbers and strings", "other arrays", "booleans", "all of the above"],
+      correct: "all of the above",
+    },
+    {
+      id: "3",
+      question: "String values must be enclosed within _________ when being assigned to variables.",
+      options: ["commas", "culry brackets", "quotes", "parenthesis"],
+      correct: "quotes",
+    },
+    {
+      id: "4",
+      question: "A very useful tool used during development and debugging for printing content to the debugger is: ",
+      options: ["JavaScript", "terminal/bash", "for loops", "console.log"],
+      correct: "console.log",
+      },
+  ];
 
 // Created a function to show the correct question and the correct answer options.
   function showQuestion(event) {
