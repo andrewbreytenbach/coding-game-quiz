@@ -53,7 +53,7 @@ window.onload = function() {
 
     var timeInterval = setInterval(function() {
         timeLeft--;
-        document.querySelector("#timer").textContent = timeLeft + " seconds left"
+        document.querySelector(".timer").textContent = timeLeft + " seconds left"
         if (timeLeft === 0) {
             clearInterval(timeInterval)
         }
