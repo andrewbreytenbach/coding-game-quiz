@@ -4,6 +4,27 @@
     box-sizing: border-box;
     font-family: sans-serif;
   }
+
   body {
     background-color: #b8bdc3;
+  }
+
+h1, .number-of-count {
+    text-align: center;
+}
+
+#timer {
+    float: right;
+    margin-right: 25px;
+}
+
+.start-screen, .score-container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
