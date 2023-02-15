@@ -34,6 +34,19 @@ var questionFive = {
     correctAnswer: 3
   };
 
+// Created a function to show the correct question and the correct answer options.
+  function showQuestion(event) {
+    
+    let questionTitle = document.getElementById('title');
+    questionTitle.textContent = event.title;
+
+    let answerOptions = document.querySelectorAll('.alternative');
+    console.log(answerOptions);
+    answerOptions.forEach(function(element, index){
+      element.textContent = event.alternatives[index];
+    });
+  }
+
 // Created a function that will display the remaining time in the game to the HTML.
 document.querySelector(".start-button").addEventListener("click", function() {
     var timeLeft = 75;
