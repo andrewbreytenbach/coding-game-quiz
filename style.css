@@ -20,7 +20,7 @@ h1, .number-of-count {
     text-align: center;
 }
 
-.timer {
+#timer {
     float: right;
     margin-right: 25px;
     color: var(--purple);

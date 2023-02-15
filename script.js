@@ -1,4 +1,15 @@
- 
+ // Created a function that will display the remaining time in the game to the HTML.
+window.onload = function() { 
+    var timeLeft = 75;
+
+    var timeInterval = setInterval(function() {
+        timeLeft--;
+        document.querySelector("#timer").textContent = timeLeft + " seconds left"
+        if (timeLeft === 0) {
+            clearInterval(timeInterval)
+        }
+    }, 1000);
+};
 
 // Created an array with the quiz questions inside of it.
 const quizArray = [
@@ -36,26 +47,14 @@ const quizArray = [
 
 // Created a function to show the correct question and the correct answer options by passing the array into the function.
  function showQuestion(event) {
-    let questionTitle = document.getElementById('title');
+    let questionTitle = document.getElementById('#title');
     questionTitle.textContent = event.question;
   
     let answerOptions = document.querySelectorAll('#questions');
     answerOptions.forEach(function(element, index){
       element.textContent = event.options[index];
     });
-  }
+  };
 
 showQuestion(quizArray[0]);
 
-// Created a function that will display the remaining time in the game to the HTML.
-window.onload = function() { 
-    var timeLeft = 75;
-
-    var timeInterval = setInterval(function() {
-        timeLeft--;
-        document.querySelector(".timer").textContent = timeLeft + " seconds left"
-        if (timeLeft === 0) {
-            clearInterval(timeInterval)
-        }
-    }, 1000);
-};
