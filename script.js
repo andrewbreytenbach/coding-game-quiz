@@ -137,7 +137,7 @@ function checker(userOption)
       });
     }
 
-// This fucntion determines the initial layout of the webpage upon visiting the site. 
+// This function determines the initial layout of the webpage upon visiting the site. 
 function initial() {
     quizContainer.innerHTML = "";
     questionCount = 0;
@@ -148,3 +148,11 @@ function initial() {
     quizCreator();
     quizDisplay(questionCount);
   }
+
+
+// This adds an event listener for when the user hits the start button that will begin the quiz. 
+startButton.addEventListener("click", () => {
+    startScreen.classList.add("hide");
+    displayContainer.classList.remove("hide");
+    initial();
+  });
