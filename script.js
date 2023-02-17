@@ -136,3 +136,15 @@ function checker(userOption)
         }
       });
     }
+
+// This fucntion determines the initial layout of the webpage upon visiting the site. 
+function initial() {
+    quizContainer.innerHTML = "";
+    questionCount = 0;
+    scoreCount = 0;
+    count = 11;
+    clearInterval(countdown);
+    timerDisplay();
+    quizCreator();
+    quizDisplay(questionCount);
+  }
