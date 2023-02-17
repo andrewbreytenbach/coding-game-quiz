@@ -116,3 +116,23 @@ function quizCreator() {
       quizContainer.appendChild(div);
     }
   }
+
+// This calls a function to check if option is correct or not and then add the necessary points to their score. 
+function checker(userOption) 
+    let userSolution = userOption.innerText;
+    let question =
+      document.getElementsByClassName("container-mid")[questionCount];
+    let options = question.querySelectorAll(".option-div");
+    //if user clicked answer == correct option stored in object
+    if (userSolution === quizArray[questionCount].correct) {
+      userOption.classList.add("correct");
+      scoreCount++;
+    } else {
+      userOption.classList.add("incorrect");
+      // For marking the correct option
+      options.forEach((element) => {
+        if (element.innerText == quizArray[questionCount].correct) {
+          element.classList.add("correct");
+        }
+      });
+    }
