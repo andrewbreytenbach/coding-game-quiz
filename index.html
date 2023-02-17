@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" />
-    <title>JavaScript Coding Quiz</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css"/>
+  <title>JavaScript Coding Quiz</title>
 </head>
 <body>
-    <h1>JavaScript Coding Quiz</h1>
-    <p id="timer"></p>
-    <div class="start-screen"></div>
-    <div id="display-container">
-      <div class="header">
-        <div>
-          <h2 id="title"></h2>
-          <ul>
-            <li><button id="option-0"></button></li>
-            <li><button id="option-1"></button></li>
-            <li><button id="option-2"></button></li>
-            <li><button id="option-3"></button></li>
-          </ul>
-        </div>
+  <h1>JavaScript Coding Quiz</h1>
+  <p id="timer"></p>
+  <div class="start-screen">
+    <button id="start-button">Start</button>
+  </div>
+  <div id="display-container" class="hide">
+    <div class="header">
+      <div>
+        <h2 id="title"></h2>
+        <ul id="questions">
+          <li><button id="option-0"></button></li>
+          <li><button id="option-1"></button></li>
+          <li><button id="option-2"></button></li>
+          <li><button id="option-3"></button></li>
+        </ul>
       </div>
-      <div class="score-container hide">
-        <div id="user-score">Current Score: <span id="score-value"></span></div>
-      </div>
-      <button id="submit-button">Submit</button>
     </div>
-    <script src="script.js"></script>
+    <div class="score-container hide">
+      <div id="user-score">Current Score: <span id="score-value"></span></div>
+    </div>
+    <button id="submit-button">Submit</button>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
