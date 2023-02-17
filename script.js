@@ -68,9 +68,21 @@ nextBtn.addEventListener(
           questionCount + 1 + " of " + quizArray.length + " Question";
         //display quiz
         quizDisplay(questionCount);
-        count = 11;
+        count = 75;
         clearInterval(countdown);
         timerDisplay();
       }
     })
   );
+
+// Added a countdown timer by using a set interval function.
+const timerDisplay = () => {
+    countdown = setInterval(() => {
+      count--;
+      timeLeft.innerHTML = `${count}s`;
+      if (count == 0) {
+        clearInterval(countdown);
+        displayNext();
+      }
+    }, 1000);
+  };
