@@ -49,24 +49,24 @@ const quizArray = [
   ];
   
 // Added an event listener to the submit button so that the answer is submitted and the next questino shows up.
-nextBtn.addEventListener(
+submitBtn.addEventListener(
     "click",
     (displayNext = () => {
-      //increment questionCount
+      // This increases the question count that will be displayed on the HTML each time. 
       questionCount += 1;
-      //if last question
+      // if last question
       if (questionCount == quizArray.length) {
-        //hide question container and display score
+        // hide question container and display score
         displayContainer.classList.add("hide");
         scoreContainer.classList.remove("hide");
-        //user score
+        // This displays the user score to the HTML file.
         userScore.innerHTML =
           "Your score is " + scoreCount + " out of " + questionCount;
       } else {
-        //display questionCount
+        // display questionCount
         countOfQuestion.innerHTML =
           questionCount + 1 + " of " + quizArray.length + " Question";
-        //display quiz
+        // This displays the quiz and runs the needed functions.
         quizDisplay(questionCount);
         count = 75;
         clearInterval(countdown);
@@ -86,3 +86,33 @@ const timerDisplay = () => {
       }
     }, 1000);
   };
+
+// This is the function we will call later on in the js file to run the quiz.
+function quizCreator() {
+    // This randomnly sorts the question order so it is different each time.
+    quizArray.sort(() => Math.random() - 0.5);
+    // This is the for statement that will generate the quiz.
+    for (let i of quizArray) {
+      // This randomnly sorts the question answer options so it is different each time.
+      i.options.sort(() => Math.random() - 0.5);
+      // This creates a div in the html that will display the question and the answers.
+      let div = document.createElement("div");
+      div.classList.add("container-mid", "hide");
+      // This specifies the question number that will be displayed on the HTML
+      countOfQuestion.innerHTML = 1 + " of " + quizArray.length + " Question";
+      // This uses js to display the correct question.
+      let question_DIV = document.createElement("p");
+      question_DIV.classList.add("question");
+      question_DIV.innerHTML = i.question;
+      div.appendChild(question_DIV);
+
+      // This lists the four answer options for each question.
+      div.innerHTML += `
+      <button class="option-div" onclick="checker(this)">${i.options[0]}</button>
+       <button class="option-div" onclick="checker(this)">${i.options[1]}</button>
+        <button class="option-div" onclick="checker(this)">${i.options[2]}</button>
+         <button class="option-div" onclick="checker(this)">${i.options[3]}</button>
+      `;
+      quizContainer.appendChild(div);
+    }
+  }
