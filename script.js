@@ -1,3 +1,19 @@
+// Used query selector to set all the variables I will need for the function.
+let timeLeft = document.querySelector(".time-left");
+let quizContainer = document.getElementById("#questions-container");
+let submitBtn = document.getElementById("#submit-button");
+let countOfQuestion = document.querySelector(".number-of-question");
+let displayContainer = document.getElementById("#display-container");
+let scoreContainer = document.querySelector(".score-container");
+let restart = document.getElementById("restart");
+let userScore = document.getElementById("#user-score");
+let startScreen = document.querySelector(".start-screen");
+let startButton = document.getElementById("#start-button");
+let questionCount;
+let scoreCount = 0;
+let count = 75;
+let countdown;
+
 // Created an array with the quiz questions inside of it.
 const quizArray = [
     {
@@ -32,3 +48,29 @@ const quizArray = [
     },
   ];
   
+// Added an event listener to the submit button so that the answer is submitted and the next questino shows up.
+nextBtn.addEventListener(
+    "click",
+    (displayNext = () => {
+      //increment questionCount
+      questionCount += 1;
+      //if last question
+      if (questionCount == quizArray.length) {
+        //hide question container and display score
+        displayContainer.classList.add("hide");
+        scoreContainer.classList.remove("hide");
+        //user score
+        userScore.innerHTML =
+          "Your score is " + scoreCount + " out of " + questionCount;
+      } else {
+        //display questionCount
+        countOfQuestion.innerHTML =
+          questionCount + 1 + " of " + quizArray.length + " Question";
+        //display quiz
+        quizDisplay(questionCount);
+        count = 11;
+        clearInterval(countdown);
+        timerDisplay();
+      }
+    })
+  );
