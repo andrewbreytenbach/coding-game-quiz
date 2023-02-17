@@ -156,3 +156,9 @@ startButton.addEventListener("click", () => {
     displayContainer.classList.remove("hide");
     initial();
   });
+
+// This tells the website to hide the quiz upon initially loading, until the user hits the start button.
+window.onload = () => {
+    startScreen.classList.remove("hide");
+    displayContainer.classList.add("hide");
+  };
