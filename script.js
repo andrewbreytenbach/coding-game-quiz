@@ -11,6 +11,7 @@ let startScreen = document.querySelector(".start-screen");
 let startButton = document.getElementById("start-button");
 let questionCount;
 let nameInput = document.getElementById('name-input');
+const PENALTY_DURATION = 10;
 let scoreCount = 0;
 let count = 75;
 let startTime, elapsedTime = 0;
@@ -57,6 +58,13 @@ restart.addEventListener("click", () => {
     scoreContainer.classList.add("hide");
   });
   
+  function handleWrongAnswer() {
+    remainingTime -= PENALTY_DURATION;
+    if (remainingTime < 0) {
+      remainingTime = 0;
+    }
+  }
+
 // Added an event listener to the submit button so that the answer is submitted and the next questino shows up.
 submitBtn.addEventListener(
     "click",
@@ -157,6 +165,8 @@ function checker(userOption) {
       scoreCount+=10;
     } else {
       userOption.classList.add("incorrect");
+      handleWrongAnswer();
+      
       //For marking the correct option
       options.forEach((element) => {
         if (element.innerText == quizArray[questionCount].correct) {
