@@ -10,6 +10,7 @@ let userScore = document.getElementById("user-score");
 let startScreen = document.querySelector(".start-screen");
 let startButton = document.getElementById("start-button");
 let questionCount;
+let nameInput = document.getElementById('name-input');
 let scoreCount = 0;
 let count = 75;
 let startTime, elapsedTime = 0;
@@ -153,7 +154,7 @@ function checker(userOption) {
     //if user clicked answer == correct option stored in object
     if (userSolution === quizArray[questionCount].correct) {
       userOption.classList.add("correct");
-      scoreCount++;
+      scoreCount+=10;
     } else {
       userOption.classList.add("incorrect");
       //For marking the correct option
@@ -200,11 +201,17 @@ window.onload = () => {
   displayContainer.classList.add("hide");
 };
 
-localStorage.setItem('score', userScore);
+function saveScoreToLocalStorage() {
+  // Save the name and score to local storage
+  localStorage.setItem('name', nameInput.value);
+  localStorage.setItem('score', score);
+}
 
-// 3. Retrieve the score from local storage using the getItem method.
-const storedScore = localStorage.getItem('score');
+function displayScoreFromLocalStorage() {
+  // Retrieve the name and score from local storage
+  let name = localStorage.getItem('name');
+  let savedScore = localStorage.getItem('score');
 
-// 4. Display the score on the page.
-const scoreDisplay = document.querySelector('#score-display');
-scoreDisplay.textContent = storedScore;
+  // Display the name and score on the page
+  userScore.textContent = `${name}: ${savedScore}`;
+}
