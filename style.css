@@ -17,6 +17,11 @@ h1 {
   text-align: center;
   padding: 25px;
 }
+
+.text {
+  text-align: center;
+}
+
 body {
   background-color: var(--gray);
 }
@@ -97,7 +102,7 @@ button {
   border-radius: 0.3em;
 }
 .option-div:disabled {
-  color: var(--white);
+  color: black;
   cursor: not-allowed;
 }
 #submit-button {

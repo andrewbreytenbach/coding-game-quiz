@@ -58,7 +58,8 @@ restart.addEventListener("click", () => {
   
 // Added an event listener to the submit button so that the answer is submitted and the next questino shows up.
 submitBtn.addEventListener(
-    "click", (displayNext = () => {
+    "click",
+    (displayNext = () => {
       // This increases the question count that will be displayed on the HTML each time. 
       questionCount += 1;
       //if last question
@@ -69,26 +70,31 @@ submitBtn.addEventListener(
         // This displays the user score to the HTML file.
         userScore.innerHTML = 
           "Your score is " + scoreCount + " out of " + questionCount;
+      // Save the score in local storage
+      localStorage.setItem("quizScore", scoreCount);
       } else {
         //display questionCount
         countOfQuestion.innerHTML =
           questionCount + 1 + " of " + quizArray.length + " Question";
         // This displays the quiz and runs the needed functions.
         quizDisplay(questionCount);
+        clearInterval(countdown);
+        timerDisplay();
       }
     })
   );
 
 // Added a countdown timer by using a set interval function.
 const timerDisplay = () => {
-    countdown = setInterval(() => {
-      elapsedTime = Math.floor((Date.now() - startTime) / 1000);
-      timeLeft.innerHTML = `${75 - elapsedTime}s`;
-      if (elapsedTime >= 75) {
-        clearInterval(countdown);
-      }
-    }, 1000);
-  };
+  countdown = setInterval(() => {
+    elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+    timeLeft.innerHTML = `${75 - elapsedTime}s`;
+    if (elapsedTime >= 75) {
+      clearInterval(countdown);
+      timeLeft.innerHTML = ""
+    }
+  }, 1000);
+};
 
 
 const quizDisplay = (questionCount) => {
@@ -105,7 +111,6 @@ const quizDisplay = (questionCount) => {
   function quizCreator() {
     startTime = Date.now();
     timerDisplay();
-
     // This randomnly sorts the question order so it is different each time.
     quizArray.sort(() => Math.random() - 0.5);
    
@@ -177,6 +182,10 @@ function initial() {
   timerDisplay();
   quizCreator();
   quizDisplay(questionCount);
+  const storedScore = localStorage.getItem("quizScore");
+  if (storedScore) {
+    userScore.innerHTML = "Your previous score was " + storedScore;
+  }
 }
 // This adds an event listener for when the user hits the start button that will begin the quiz. 
 startButton.addEventListener("click", () => {
@@ -190,3 +199,12 @@ window.onload = () => {
   startScreen.classList.remove("hide");
   displayContainer.classList.add("hide");
 };
+
+localStorage.setItem('score', userScore);
+
+// 3. Retrieve the score from local storage using the getItem method.
+const storedScore = localStorage.getItem('score');
+
+// 4. Display the score on the page.
+const scoreDisplay = document.querySelector('#score-display');
+scoreDisplay.textContent = storedScore;
