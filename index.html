@@ -1,40 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css"/>
-  <title>JavaScript Coding Quiz</title>
-</head>
-<body>
-  <h1>JavaScript Coding Quiz</h1>
-    <p class="text">Come and test your knowledge of JavaScript! Keep track of your score and see if you can beat your friends!</p>
-    <div class="start-screen">
-      <button id="start-button">Start</button>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Code Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div id="start-screen">
+      <h1>Code Quiz</h1>
+      <p>Test your coding knowledge and skills!</p>
+      <button id="start-btn">Start Quiz</button>
     </div>
-    <div id="display-container">
-      <div class="header">
-        <div class="number-of-count">
-          <span class="number-of-question"></span>
-        </div>
-        <div class="timer-div">
-          <img src="js-logo.png" />
-          <span class="time-left"></span>
-        </div>
-      </div>
-      <div id="container">
-        <!-- questions and options will be displayed here -->
-      </div>
-      <button id="submit-button">Submit</button>
-      <div id="submit-feedback"></div>
+    
+    <div id="quiz-screen" style="display: none;">
+      <div id="timer">Time: <span id="time-remaining"></span></div>
+      <div id="question"></div>
+      <div id="choices"></div>
+      <div id="feedback"></div>
+      <button id="next-btn" style="display: none;">Next</button>
     </div>
-    <div id="high-score"></div>
-    <div class="score-container hide">
-      <div id="user-score">Score</div>
-      <button id="restart">Restart</button>
+    
+    <div id="end-screen" style="display: none;">
+      <h1>Quiz Complete!</h1>
+      <p>Your final score is <span id="final-score"></span>.</p>
+      <form>
+        <label for="initials">Enter your initials:</label>
+        <input type="text" id="initials" name="initials" maxlength="3" required>
+        <button id="submit-btn" type="submit">Submit</button>
+      </form>
     </div>
-  <!-- Script -->
-  <script src="script.js"></script>
-</body>
+    
+    <script src="script.js"></script>
+  </body>
 </html>
+
