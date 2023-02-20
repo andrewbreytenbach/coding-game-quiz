@@ -57,53 +57,64 @@ restart.addEventListener("click", () => {
     displayContainer.classList.remove("hide");
     scoreContainer.classList.add("hide");
   });
-  
-  function handleWrongAnswer() {
-    remainingTime -= PENALTY_DURATION;
-    if (remainingTime < 0) {
-      remainingTime = 0;
-    }
-  }
 
-// Added an event listener to the submit button so that the answer is submitted and the next questino shows up.
-submitBtn.addEventListener(
-    "click",
-    (displayNext = () => {
-      // This increases the question count that will be displayed on the HTML each time. 
-      questionCount += 1;
-      //if last question
-      if (questionCount == quizArray.length) {
-        //hide question container and display score
-        displayContainer.classList.add("hide");
-        scoreContainer.classList.remove("hide");
-        // This displays the user score to the HTML file.
-        userScore.innerHTML = 
-          "Your score is " + scoreCount + " out of " + questionCount;
-      // Save the score in local storage
-      localStorage.setItem("quizScore", scoreCount);
-      } else {
-        //display questionCount
-        countOfQuestion.innerHTML =
-          questionCount + 1 + " of " + quizArray.length + " Question";
-        // This displays the quiz and runs the needed functions.
-        quizDisplay(questionCount);
-        clearInterval(countdown);
-        timerDisplay();
-      }
-    })
-  );
-
-// Added a countdown timer by using a set interval function.
-const timerDisplay = () => {
-  countdown = setInterval(() => {
-    elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+  const handleWrongAnswer = () => {
+    elapsedTime += 10;
     timeLeft.innerHTML = `${75 - elapsedTime}s`;
     if (elapsedTime >= 75) {
       clearInterval(countdown);
-      timeLeft.innerHTML = ""
+      timeLeft.innerHTML = "";
     }
-  }, 1000);
-};
+  }
+
+  
+  const timerDisplay = () => {
+    countdown = setInterval(() => {
+      elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+      timeLeft.innerHTML = `${75 - elapsedTime}s`;
+      if (elapsedTime >= 75) {
+        clearInterval(countdown);
+        timeLeft.innerHTML = ""
+      }
+    }, 1000);
+  };
+    
+
+
+// Added an event listener to the submit button so that the answer is submitted and the next questino shows up.
+submitBtn.addEventListener(
+  "click",
+  (displayNext = () => {
+    // Get the currently selected answer
+    const selectedAnswer = document.querySelector(
+      `input[name="question-${questionCount}"]:checked`
+    ).value;
+
+    // Check if the answer is correct
+    const currentQuestion = quizArray[questionCount];
+    if (selectedAnswer === currentQuestion.correct) {
+      // Add to the score if the answer is correct
+      scoreCount += 10;
+    } else {
+      // Subtract 10 seconds if the answer is incorrect
+      elapsedTime += PENALTY_DURATION;
+      timeLeft.innerHTML = `${75 - elapsedTime}s`;
+      if (elapsedTime >= 75) {
+        clearInterval(countdown);
+        timeLeft.innerHTML = "";
+      }
+    }
+
+    // Move on to the next question or end the quiz
+    questionCount += 1;
+    if (questionCount == quizArray.length) {
+      // ...
+    } else {
+      // ...
+      quizDisplay(questionCount);
+    }
+  })
+);
 
 
 const quizDisplay = (questionCount) => {
@@ -155,33 +166,38 @@ const quizDisplay = (questionCount) => {
 
 // This function determines the initial layout of the webpage upon visiting the site. 
 function checker(userOption) {
-    let userSolution = userOption.innerText;
-    let question =
-      document.getElementsByClassName("container-mid")[questionCount];
-    let options = question.querySelectorAll(".option-div");
-    //if user clicked answer == correct option stored in object
-    if (userSolution === quizArray[questionCount].correct) {
-      userOption.classList.add("correct");
-      scoreCount+=10;
-    } else {
-      userOption.classList.add("incorrect");
-      handleWrongAnswer();
-      
-      //For marking the correct option
-      options.forEach((element) => {
-        if (element.innerText == quizArray[questionCount].correct) {
-          element.classList.add("correct");
-        }
-      });
-    }
+  let userSolution = userOption.innerText;
+  let question = document.getElementsByClassName("container-mid")[questionCount];
+  let options = question.querySelectorAll(".option-div");
+  let message = document.getElementById("message"); // get the message element from the HTML
 
-    //clear interval(stop timer)
-    clearInterval(countdown);
-    //disable all options
+  //if user clicked answer == correct option stored in object
+  if (userSolution === quizArray[questionCount].correct) {
+    userOption.classList.add("correct");
+    scoreCount += 10;
+    // If the user's solution is correct, display "Correct" in the message element
+    submitFeedback.textContent = "Correct";
+  } else {
+    userOption.classList.add("incorrect");
+    handleWrongAnswer();
+
+    //For marking the correct option
     options.forEach((element) => {
-      element.disabled = true;
+      if (element.innerText == quizArray[questionCount].correct) {
+        element.classList.add("correct");
+      }
     });
+    // If the user's solution is incorrect, display "Incorrect" in the message element
+    submitFeedback.textContent = "Incorrect";
   }
+
+  //clear interval(stop timer)
+  clearInterval(countdown);
+  //disable all options
+  options.forEach((element) => {
+    element.disabled = true;
+  });
+}
 
 // This function determines the initial layout of the webpage upon visiting the site. 
 function initial() {
@@ -225,3 +241,5 @@ function displayScoreFromLocalStorage() {
   // Display the name and score on the page
   userScore.textContent = `${name}: ${savedScore}`;
 }
+
+
