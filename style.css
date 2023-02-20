@@ -137,3 +137,8 @@ img {
   height: 30px;
 }
 
+#submit-feedback {
+  margin-top: 25px;
+  font-style: italic;
+  color: gray;
+}

@@ -83,38 +83,23 @@ restart.addEventListener("click", () => {
 
 // Added an event listener to the submit button so that the answer is submitted and the next questino shows up.
 submitBtn.addEventListener(
-  "click",
-  (displayNext = () => {
-    // Get the currently selected answer
-    const selectedAnswer = document.querySelector(
-      `input[name="question-${questionCount}"]:checked`
-    ).value;
-
-    // Check if the answer is correct
-    const currentQuestion = quizArray[questionCount];
-    if (selectedAnswer === currentQuestion.correct) {
-      // Add to the score if the answer is correct
-      scoreCount += 10;
-    } else {
-      // Subtract 10 seconds if the answer is incorrect
-      elapsedTime += PENALTY_DURATION;
-      timeLeft.innerHTML = `${75 - elapsedTime}s`;
-      if (elapsedTime >= 75) {
-        clearInterval(countdown);
-        timeLeft.innerHTML = "";
+    "click",
+    (displayNext = () => {
+      // This increases the question count that will be displayed on the HTML each time. 
+      questionCount += 1;
+      //if last question
+      if (questionCount == quizArray.length) {
+        //hide question container and display score
+        displayContainer.classList.add("hide");
+        scoreContainer.classList.remove("hide");
+        // This displays the user score to the HTML file.
+      
+      localStorage.setItem("quizScore", scoreCount);
+      } else {
+        quizDisplay(questionCount);
       }
-    }
-
-    // Move on to the next question or end the quiz
-    questionCount += 1;
-    if (questionCount == quizArray.length) {
-      // ...
-    } else {
-      // ...
-      quizDisplay(questionCount);
-    }
-  })
-);
+    })
+  );
 
 
 const quizDisplay = (questionCount) => {
@@ -144,9 +129,6 @@ const quizDisplay = (questionCount) => {
       let div = document.createElement("div");
       div.classList.add("container-mid", "hide");
       
-      // This specifies the question number that will be displayed on the HTML.
-      countOfQuestion.innerHTML = "Question " + 1 + " of " + quizArray.length;
-      
       // This uses js to display the correct question.
       let question_DIV = document.createElement("p");
       question_DIV.classList.add("question");
@@ -169,14 +151,14 @@ function checker(userOption) {
   let userSolution = userOption.innerText;
   let question = document.getElementsByClassName("container-mid")[questionCount];
   let options = question.querySelectorAll(".option-div");
-  let message = document.getElementById("message"); // get the message element from the HTML
+  let submitFeedback = document.getElementById("submit-feedback"); // get the message element from the HTML
 
   //if user clicked answer == correct option stored in object
   if (userSolution === quizArray[questionCount].correct) {
     userOption.classList.add("correct");
     scoreCount += 10;
     // If the user's solution is correct, display "Correct" in the message element
-    submitFeedback.textContent = "Correct";
+    submitFeedback.textContent = "Correct!";
   } else {
     userOption.classList.add("incorrect");
     handleWrongAnswer();
@@ -188,7 +170,7 @@ function checker(userOption) {
       }
     });
     // If the user's solution is incorrect, display "Incorrect" in the message element
-    submitFeedback.textContent = "Incorrect";
+    submitFeedback.textContent = "Incorrect!";
   }
 
   //clear interval(stop timer)
@@ -227,19 +209,12 @@ window.onload = () => {
   displayContainer.classList.add("hide");
 };
 
-function saveScoreToLocalStorage() {
-  // Save the name and score to local storage
-  localStorage.setItem('name', nameInput.value);
-  localStorage.setItem('score', score);
+localStorage.setItem("quizScore", scoreCount);
+let highScore = localStorage.getItem("quizScore");
+if (highScore === null || scoreCount > highScore) {
+  localStorage.setItem("quizScore", scoreCount);
+  highScore = scoreCount;
 }
-
-function displayScoreFromLocalStorage() {
-  // Retrieve the name and score from local storage
-  let name = localStorage.getItem('name');
-  let savedScore = localStorage.getItem('score');
-
-  // Display the name and score on the page
-  userScore.textContent = `${name}: ${savedScore}`;
-}
+userScore.textContent = highScore;
 
 
