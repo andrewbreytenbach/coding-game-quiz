@@ -217,4 +217,3 @@ if (highScore === null || scoreCount > highScore) {
 }
 userScore.textContent = highScore;
 
-
