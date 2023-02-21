@@ -9,13 +9,14 @@ const timeElement = document.getElementById("time");
 const gameOverContainer = document.getElementById("game-over-container");
 const scoreElement = document.getElementById("score");
 const intitialsElement = document.getElementById("initials");
-const submitButton = document.getElementById("submit-button");
+
 const timeLimit = 75; // set the time in seconds
 
 // Declared a few variables that will be reassigned later in the js file. 
 let currentQuestionIndex;
 let timeLeft;
 let timerId;
+let score = 0;
 
 // Created an array with the quiz questions inside of it. 
 const questions = [
@@ -74,8 +75,8 @@ function showQuestion () {
 function checkAnswer(index) {
     const question = questions[currentQuestionIndex];
     if (index === question.answerIndex) {
-        feedbackElement.textContent = "Correct!";
-        // increase the score by 10 points
+      feedbackElement.textContent = "Correct!";
+      score += 10;
     } else {
         feedbackElement.textContent = "Incorrect!"
         timeLeft -= 10;
@@ -83,9 +84,11 @@ function checkAnswer(index) {
             timeLeft = 0;
         }
     }
+    scoreElement.textContent = score; // Add this line to update the score element
     disableOptions();
     showNextButton();
 }
+
 
 // This function disables the answer options. 
 function disableOptions() {
@@ -139,18 +142,16 @@ function updateTime ()  {
 // This function ends the quiz when the timer is done, and it displays the game over message to the HTML. 
 function endQuiz () {
     clearInterval(timerId)
-    scoreElement.textContent = currentQuestionIndex;
+    scoreElement.textContent = score;
     quizContainer.style.display = "none";
     gameOverContainer.style.display = "block";
 }
 
 // This functions calls for the user to type their initials and then sotres their score to local storage, redirecting them to the high scores page to view their score. 
 function submitScore(event) {
-    event.preventDefault(); // prevent the form from submitting
     const initials = intitialsElement.value;
-    const score = currentQuestionIndex;
     const highScores = JSON.parse(localStorage.getItem("highscores")) || [];
-    highScores.push({ initials, score });
+    highScores.push({ initials, score: userScore });
     localStorage.setItem("highscores", JSON.stringify(highScores));
     window.location.href = "highscores.html"
 }
@@ -159,6 +160,7 @@ function submitScore(event) {
 // This adds event listeners so that when these buttons are clicked, a function is called. 
 startButton.addEventListener("click", startQuiz);
 nextButton.addEventListener("click", showNextQuestion);
+const submitButton = document.getElementById("submit-button");
 submitButton.addEventListener("click", submitScore);
 
 
