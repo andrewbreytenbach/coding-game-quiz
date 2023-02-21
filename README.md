@@ -14,7 +14,7 @@ The goal of this project was to create an interactive JavaScript quiz that allow
 
 In order to acess this website, just visit the following webpage: [https://github.com/andrewbreytenbach/coding-game-quiz](https://github.com/andrewbreytenbach/coding-game-quiz)
 
-To get a local copy up and running, simply view the index.html file, stle.css, or the script.js file and see how you can play around, copy, and edit the file for personal usage. You can also change the password criteria to your personal needs by adjusting the if functions and the variables associated with each prompt. 
+To get a local copy up and running, simply view the index.html file, stle.css, or the script.js file and see how you can play around, copy, and edit the file for personal usage. You can also change the questions and answers by navigating into the JavaScript file and changing the array options. 
 
 ## Usage
 
