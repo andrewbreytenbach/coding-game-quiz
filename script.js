@@ -66,3 +66,19 @@ function showQuestion () {
         optionsElement.appendChild(button);
     });
 }
+
+// This calls a function to check if the answer is correct, then increase the point total or decrease the time for an incorrect answer. 
+function checkAnswer(index) {
+    const question = questions[currentQuestionIndex];
+    if (index === question.answerIndex) {
+        feedbackElement.textContent = "Correct!";
+    } else {
+        feedbackElement.textContent = "Incorrect!"
+        timeLeft -= 10;
+        if (timeLeft < 0) {
+            timeLeft = 0;
+        }
+    }
+    disableOptions();
+    showNextButton();
+}
