@@ -44,3 +44,13 @@ const questions = [
         answerIndex: 3
     },
 ];
+
+// Created a function that can be called to start the quiz when the start button is clicked and it begins with the first question. 
+function startQuiz () {
+    currentQuestionIndex = o;
+    timeLeft = timeLimit;
+    timerId = setInterval(updateTime, 1000);
+    showQuestion();
+    startButton.style.display = "none";
+    quizContainer.style.display = "block";
+}
