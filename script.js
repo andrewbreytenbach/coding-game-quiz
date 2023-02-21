@@ -35,7 +35,7 @@ const questions = [
         answerIndex: 3
     },
     {
-        question: "String values must be encolsed within _________ when being assigned to variables.",
+        question: "String values must be enclosed within _________ when being assigned to variables.",
         options: ["commas", "curly brackets", "quotes", "parenthesis"],
         answerIndex: 2
     },
@@ -62,11 +62,13 @@ function showQuestion () {
     questionElement.textContent = question.question;
     optionsElement.innerHTML = "";
     question.options.forEach((option, index) => {
-        const button = document.createElement("button");
-        button.addEventListener("click", () => checkAnswer(index));
-        optionsElement.appendChild(button);
+      const button = document.createElement("button");
+      button.textContent = option; // add this line to set the button text
+      button.addEventListener("click", () => checkAnswer(index));
+      optionsElement.appendChild(button);
     });
-}
+  }
+
 
 // This calls a function to check if the answer is correct, then increase the point total or decrease the time for an incorrect answer. 
 function checkAnswer(index) {
@@ -154,5 +156,7 @@ function submitScore() {
 
 // This adds event listeners so that when these buttons are clicked, a function is called. 
 startButton.addEventListener("click", startQuiz);
-nextButton.addEventListener("click", showNextButton);
+nextButton.addEventListener("click", showNextQuestion);
 submitButton.addEventListener("click", submitScore);
+
+

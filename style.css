@@ -43,7 +43,7 @@ h1 {
   text-align: center;
 }
 
-#choices {
+#options {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
