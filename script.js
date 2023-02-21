@@ -9,6 +9,7 @@ const timeElement = document.getElementById("time");
 const gameOverContainer = document.getElementById("game-over-container");
 const scoreElement = document.getElementById("score");
 const intitialsElement = document.getElementById("initials");
+const submitButton = document.getElementById("submit-button");
 const timeLimit = 75; // set the time in seconds
 
 // Declared a few variables that will be reassigned later in the js file. 
@@ -152,3 +153,8 @@ function submitScore() {
     localStorage.setItem("highscores", JSON.stringify(highScores));
     window.location.href = "highscores.html"
 }
+
+// This adds event listeners so that when these buttons are clicked, a function is called. 
+startButton.addEventListener("click", startQuiz);
+nextButton.addEventListener("click", showNextButton);
+submitButton.addEventListener("click", submitScore);
