@@ -72,6 +72,7 @@ function checkAnswer(index) {
     const question = questions[currentQuestionIndex];
     if (index === question.answerIndex) {
         feedbackElement.textContent = "Correct!";
+        // increase the score by 10 points
     } else {
         feedbackElement.textContent = "Incorrect!"
         timeLeft -= 10;
@@ -82,3 +83,11 @@ function checkAnswer(index) {
     disableOptions();
     showNextButton();
 }
+
+// This function disables the answer options. 
+function disableOptions() {
+    const buttons = optionsElement.querySelectorAll("button");
+    buttons.forEach(button => {
+        button.disabled = true;
+    });
+} 
