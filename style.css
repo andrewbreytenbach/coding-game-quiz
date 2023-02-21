@@ -9,7 +9,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 
 h1 {
@@ -66,14 +66,26 @@ button {
 
 #options {
   margin-top: 25px;
+  padding: 25px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #options button {
-  border: 1px solid black;
-  padding: 10px;
-  margin-bottom: 10px;
+ background-color: var(--purple);
+ color: var(--white);
+ border-radius: 5px;
+ border: 1px solid black;
+ padding: 10px;
+ margin-bottom: 10px;
+ width: 200px;
+}
+
+#options button:hover {
+  background-color: var(--pink);
+  cursor: pointer;
 }
 
 #next-button {
@@ -84,4 +96,52 @@ button {
   padding: .7em 1.8em;
   border-radius: .3em;
   float: right ;
+}
+
+#submit-button {
+  font-size: 1.3em;
+  padding: 0.5em 1.8em;
+  border-radius: .2em;
+  color: var(--white);
+  background-color: var(--pink);
+}
+
+/* This styles the rows in the high scores table for the highscores.html  */
+.row {
+ background-color: var(--gray);
+ text-align: center;
+}
+
+/* This styles the user initials in the high scores table for the highscores.html  */
+#user-initials {
+ color: var(--purple);
+ font-weight: bolder;
+ text-align: center;
+ padding-left: 50px;
+ padding-right: 50px;
+ padding-top: 50px;
+ padding-bottom: 10px;
+}
+
+/* This styles the user scores in the high scores table for the highscores.html  */
+#score {
+ color: var(--purple);
+ font-style: italic;
+ text-align: center;
+ padding-left: 50px;
+ padding-right: 50px;
+ padding-top: 50px;
+ padding-bottom: 10px;
+}
+
+/* This styles the table in the high scores table for the highscores.html  */
+#high-scores-table {
+  text-align: center;
+  padding: 50px;
+}
+
+#high-scores {
+  font-size: larger;
+  color: var(--pink);
+  padding: 25px;
 }

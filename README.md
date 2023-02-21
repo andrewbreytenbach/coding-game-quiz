@@ -2,7 +2,7 @@
 
 ## About The Project
 
-The goal of this project was to take a functional HTML, CSS, and JS file and then modify it such that a password is generated, specified to the users individualized needs, when they click the 'Generate Password' button. 
+The goal of this project was to create an interactive JavaScript quiz that allows the user to save their score and continue to take the quiz and save hteir score to compare their progress over time. 
 
 ### Built With
 
@@ -18,15 +18,27 @@ To get a local copy up and running, simply view the index.html file, stle.css, o
 
 ## Usage
 
-Once the user fist acceses the website, the following image is what they will find: 
+Once the user first acceses the website, the following image is what they will find: 
 
-![Website without the password generated](/empty.png "Empty Image")
+![Start Page](/screenshots/start-page.png "Start Page")
 
-After clicking the 'Generate Password' red button, the user will be given a series of prompts asking them to enter in the number of characters they want the password to have, and then a series of prompts asking if it needs to be uppercase, lowercase, numeric, or containing symbols. Once all of these prompt boxes are selected, then the user is given a generated password in the text box as shown below:
+This is the start page for the quiz. In order to begin the quiz and start the timer, the user will need to click the 'Start' button. Once the user clicks the button, the quiz begins, as shown below:
 
-![Website the password generated](/generated-password.png "Generated Password")
+![First Question](/screenshots/first-question.png "First Question")
 
-Based on the answers given to each prompt, the specific criteria of each password will differ slightly. 
+Depending on the answer the user selects, they will either be told 'Correct!' or 'Incorrect!' immediately, as shown below:
+
+![Correct](/screenshots/correct.png "Correct")
+
+After the user works their way through all of the questions OR the time runs out, whichever happens first, they will see this page:
+
+![Submit Score](/screenshots/submit-score.png "Submit Score")
+
+Here, they will be prompted to enter their initials to log their score. Their score will then be stored at the High Scores page, which looks like this: 
+
+![High Scores](/screenshots/high-scores-page.png "High Scores")
+
+Here, the browser will store their score each time they retake the quiz and then save it to their initials, so they can compare their progress each time they take the quiz. 
 
 ## License
 
