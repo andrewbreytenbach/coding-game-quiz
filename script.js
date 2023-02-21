@@ -54,3 +54,15 @@ function startQuiz () {
     startButton.style.display = "none";
     quizContainer.style.display = "block";
 }
+
+// Created a function that shows the question when the button is clicked and displays the options as well. 
+function showQuestion () {
+    const question = questions[currentQuestionIndex];
+    questionElement.textContent = question.question;
+    optionsElement.innerHTML = "";
+    question.options.forEach((option, index) => {
+        const button = document.createElement("button");
+        button.addEventListener("click", () => checkAnswer(index));
+        optionsElement.appendChild(button);
+    });
+}
