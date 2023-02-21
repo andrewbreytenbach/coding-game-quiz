@@ -1,3 +1,4 @@
+/* This sets a few color variables for the website to use as a template */
 :root {
   --purple: rgb(123, 6, 104);
   --pink: rgb(242, 7, 172);
@@ -5,6 +6,7 @@
   --gray: rgb(225, 220, 220);
 }
 
+/* This sets generic padding, margin, box sizes, and a font family for the webpage */
 * {
   padding: 0;
   margin: 0;
@@ -12,26 +14,31 @@
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 
+/* This sets the color for the h1 using the variables, aligns the text to the center, and gives it padding. */
 h1 {
   color: var(--purple);
   text-align: center;
   padding: 25px;
 }
 
+/* This aligns the text paragraph to the center of the webpage */
 #text {
   text-align: center;
 }
 
+/* This creates a generic background color for the body of the webpage */
 body {
   background-color: var(--gray);
 }
 
+/* This sets all buttons to have no border, no outline, and to have a cursor pointer. */
 button {
   border: none;
   outline: none;
   cursor: pointer;
 }
 
+/* This sets the styling for the start and restart buttons respectively, inlcuding their background and text colors. */
 #start-button, #restart-button {
   font-size: 1.3em;
   padding: 0.5em 1.8em;
@@ -42,6 +49,7 @@ button {
   margin: 0 auto;
 }
 
+/* This sets the styling for the quiz once the user clicks the start button */
 #quiz-container {
   background-color: var(--white);
   padding: 3.1em 1.8em;
@@ -55,6 +63,7 @@ button {
   border-radius: .6em;
 }
 
+/* This stacks the options on top of one another vertically */
 #options {
   margin-top: 25px;
   padding: 25px;
@@ -64,6 +73,7 @@ button {
   align-items: center;
 }
 
+/* This sets the options button styles and their background colors, borders, margins, etc. */
 #options button {
  background-color: var(--purple);
  color: var(--white);
@@ -74,11 +84,13 @@ button {
  width: 200px;
 }
 
+/* This changes the background color of the buttons in the options div when the mouse hovers over them */
 #options button:hover {
   background-color: var(--pink);
   cursor: pointer;
 }
 
+/* This sets the styling information for the next button and specifies its location to the right */
 #next-button {
   margin-top: 1.5em;
   font-size: 1em;
@@ -89,6 +101,7 @@ button {
   float: right ;
 }
 
+/* This styles hte color and padding for the submit button */
 #submit-button {
   font-size: 1.3em;
   padding: 0.5em 1.8em;
