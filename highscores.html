@@ -16,7 +16,23 @@
             </tr>
         </thead>
         <tbody>
-            <script src="app.js"></script>
+            <script>
+                 const highScores = JSON.parse(localStorage.getItem("highscores")) || [];
+                 const tableBody = document.querySelector("#high-scores-table tbody");
+
+                 highScores.forEach(score => {
+                    const row = document.createElement("tr");
+                    const initialsCell = document.createElement("td");
+                    const scoreCell = document.createElement("td");
+
+                    initialsCell.textContent = score.initials;
+                    scoreCell.textContent = score.score;
+
+                    row.appendChild(initialsCell);
+                    row.appendChild(scoreCell);
+                    tableBody.appendChild(row);
+                 });
+            </script>
         </tbody>
     </table>
 </body>
