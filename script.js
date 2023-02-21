@@ -142,3 +142,13 @@ function endQuiz () {
     quizContainer.style.display = "none";
     gameOverContainer.style.display = "block";
 }
+
+// This functions calls for the user to type their initials and then sotres their score to local storage, redirecting them to the high scores page to view their score. 
+function submitScore() {
+    const initials = intitialsElement.value;
+    const score = currentQuestionIndex;
+    const highScores = JSON.parse(localStorage.getItem("highscores")) || [];
+    highScores.push({ initials, score });
+    localStorage.setItem("highscores", JSON.stringify(highScores));
+    window.location.href = "highscores.html"
+}
