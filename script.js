@@ -91,3 +91,13 @@ function disableOptions() {
         button.disabled = true;
     });
 } 
+
+// This function enables the answer options. 
+function enableOptions() {
+    function disableOptions() {
+        const buttons = optionsElement.querySelectorAll("button");
+        buttons.forEach(button => {
+            button.disabled = false;
+        });
+    } 
+}
