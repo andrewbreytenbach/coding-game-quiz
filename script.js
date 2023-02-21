@@ -101,3 +101,13 @@ function enableOptions() {
         });
     } 
 }
+
+// This function shows the next button using block display. 
+function showNextButton() {
+    nextButton.style.display = "block";
+}
+
+// This function hides the next button using display none. 
+function hideNextButton() {
+    nextButton.style.display = "none";
+}
