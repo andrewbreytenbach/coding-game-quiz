@@ -48,7 +48,7 @@ const questions = [
 
 // Created a function that can be called to start the quiz when the start button is clicked and it begins with the first question. 
 function startQuiz () {
-    currentQuestionIndex = o;
+    currentQuestionIndex = 0;
     timeLeft = timeLimit;
     timerId = setInterval(updateTime, 1000);
     showQuestion();
@@ -95,12 +95,10 @@ function disableOptions() {
 
 // This function enables the answer options. 
 function enableOptions() {
-    function disableOptions() {
         const buttons = optionsElement.querySelectorAll("button");
         buttons.forEach(button => {
             button.disabled = false;
         });
-    } 
 }
 
 // This function shows the next button using block display. 

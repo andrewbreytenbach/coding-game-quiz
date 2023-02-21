@@ -17,6 +17,7 @@
         </thead>
         <tbody>
             <script>
+                // This is the js code for the highscores table. It stores the values using local storage, then uses appendChild to add new rows for each time the quiz is taken again. 
                  const highScores = JSON.parse(localStorage.getItem("highscores")) || [];
                  const tableBody = document.querySelector("#high-scores-table tbody");
 
