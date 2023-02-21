@@ -111,3 +111,16 @@ function showNextButton() {
 function hideNextButton() {
     nextButton.style.display = "none";
 }
+
+// This functions enables the answer buttons for the next question and clears the feedback message. 
+function showNextQuestion () {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+        enableOptions();
+        hideNextButton();
+        feedbackElement.textContent = "";
+        showQuestion();
+    } else {
+        endQuiz();
+    }
+}
