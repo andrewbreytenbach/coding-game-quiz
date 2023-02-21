@@ -124,3 +124,13 @@ function showNextQuestion () {
         endQuiz();
     }
 }
+
+// This function will update the time that is being displayed to the HTML and whent he time htis zero, it will end the quiz. 
+function updateTime ()  {
+    timeLeft--;
+    if (timeLeft <= 0) {
+        endQuiz();
+    } else {
+        timeElement.textContent = timeLeft;
+    }
+}
