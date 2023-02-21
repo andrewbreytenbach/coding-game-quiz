@@ -8,7 +8,8 @@ const nextButton = document.getElementById("next-button");
 const timeElement = document.getElementById("time");
 const gameOverContainer = document.getElementById("game-over-container");
 const scoreElement = document.getElementById("score");
-const intitialsElement = document.getElementById("initials");
+const initialsElement = document.getElementById("initials");
+const submitButton = document.getElementById("submit-button");
 
 const timeLimit = 75; // set the time in seconds
 
@@ -149,18 +150,19 @@ function endQuiz () {
 
 // This functions calls for the user to type their initials and then sotres their score to local storage, redirecting them to the high scores page to view their score. 
 function submitScore(event) {
-    const initials = intitialsElement.value;
+    event.preventDefault();
+    const initials = initialsElement.value;
     const highScores = JSON.parse(localStorage.getItem("highscores")) || [];
-    highScores.push({ initials, score: userScore });
+    highScores.push({ initials, score: score });
     localStorage.setItem("highscores", JSON.stringify(highScores));
     window.location.href = "highscores.html"
 }
 
+submitButton.addEventListener("click", submitScore);
 
 // This adds event listeners so that when these buttons are clicked, a function is called. 
 startButton.addEventListener("click", startQuiz);
 nextButton.addEventListener("click", showNextQuestion);
-const submitButton = document.getElementById("submit-button");
-submitButton.addEventListener("click", submitScore);
+
 
 
