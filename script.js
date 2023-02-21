@@ -134,3 +134,11 @@ function updateTime ()  {
         timeElement.textContent = timeLeft;
     }
 }
+
+// This function ends the quiz when the timer is done, and it displays the game over message to the HTML. 
+function endQuiz () {
+    clearInterval(timerId)
+    scoreElement.textContent = currentQuestionIndex;
+    quizContainer.style.display = "none";
+    gameOverContainer.style.display = "block";
+}
